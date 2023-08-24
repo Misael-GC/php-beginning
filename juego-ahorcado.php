@@ -305,3 +305,6 @@ if($attempts < MAX_ATTEMPS ) //Si el numero de intentos es menor al maximo, o te
 
 echo " La palabra es: $choosen_word \n";
 echo " Tú descubriste $discovered_letters \n";
+
+// https://github.com/marcossarlo/juego-ahorcado-php/blob/main/index.php
+// https://github.com/RetaxMaster/juego-ahorcado-php/blob/main/index.php
