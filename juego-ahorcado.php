@@ -9,16 +9,19 @@ function clear()
     }
 }
 
-function check_letters($choosen_word, $player_letter, $discovered_letters){
+function check_letters($word, $letter, $discovered_letters){
         //verificamos todas las ocurrencias de esta letra para reemplazarla //lo que hace la linea es buscar y reemplazar si la letra ingresada esta en la palabra
         $offset = 0;
         while (
-            ($letter_position = strpos($choosen_word, $player_letter, $offset)) !== false
+            ($letter_position = strpos($word, $letter, $offset)) !== false
         ) { //verifica si la letra ingresada por el jugador esta presente en la palabra seleccionada
 
-            $discovered_letters[$letter_position] = $player_letter; //reemplaza el _ por la letra que el user adivino
+            $discovered_letters[$letter_position] = $letter; //reemplaza el _ por la letra que el user adivino
             $offset = $letter_position + 1; //ya no busca desde el indice 0 de la palabra sino que a la siguiente letra
         }
+
+        return $discovered_letters;
+
 }
 
 function print_wrong_letter(){
@@ -394,11 +397,11 @@ $possible_word = [
 ];
 
 //define los intentos que puede tener el jugador
-define("MAX_ATTEMPS", 7);
-
+define("MAX_ATTEMPS", 6);
 
 //empecemos el juego
 echo "🧑‍💻 ¡Juego de ahorcado! \n\n";
+
 
 /* Incializaomo el juego
 
@@ -435,7 +438,7 @@ do { //do va a repetir el programa
     if (str_contains($choosen_word, $player_letter)) {
        $discovered_letters = check_letters($choosen_word, $player_letter, $discovered_letters);
     } else {
-        clear();
+        print_wrong_letter();
         //SEGUNDA PARTE -------------------------------
     }
     clear();
